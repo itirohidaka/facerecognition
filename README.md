@@ -1,6 +1,8 @@
 
 # CDK Python - Face Recognition
 
+![alt text](img/facerecognition.jpg)
+
 This is a blank project for Python development with CDK.
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
