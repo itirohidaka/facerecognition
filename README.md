@@ -1,5 +1,5 @@
 
-# Welcome to your CDK Python project!
+# CDK Python - Face Recognition
 
 This is a blank project for Python development with CDK.
 
