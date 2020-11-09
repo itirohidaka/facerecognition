@@ -101,5 +101,5 @@ class MaskService(core.Construct):
         #bucket and dynamodb table permition
         bucket.grant_read_write(handler)
         table.grant_read_write_data(handler)  
-        #bucket_photo.grant_read_write(oia)
+        bucket_photo.grant_read_write(oia)
         
