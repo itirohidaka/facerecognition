@@ -27,6 +27,7 @@ setuptools.setup(
         "aws_cdk.aws_dynamodb==1.71.0",
         "aws_cdk.aws_cloudfront==1.71.0",
         "aws_cdk.aws_cloudfront_origins==1.71.0",
+        "aws_cdk.aws_lambda_event_sources==1.71.0",
     ],
 
     python_requires=">=3.6",

@@ -1,5 +1,6 @@
 import json
 import boto3
+import os
 from botocore.exceptions import ClientError
 from ast import literal_eval
 
@@ -33,19 +34,29 @@ def lambda_handler(event, context):
     print(type(dict1[0]))
     print(dict1[0])
     
-
+    # Get Environment Variable
+    try:
+        cdn_domain = os.environ['CDNDOMAIN']
+    except:
+        cdn_domain = "itiro-teste"
+        
+    try:
+        api_url = os.environ['APIURL']
+    except:
+        api_url = "itiro-teste"
         
     
     #print(type(res))
     #Prepare the HTML response
     #content = '<html><body><h1>Test</h1><BR><img id="imagem01" src="http://d10km6otpah3bu.cloudfront.net/' + photofilename + '" alt="Test" style="width:30%;height:auto;"></body></html>'
-    initial_html = '<html> <body> <button type="submit" onclick="send()">Take a New Photo</button><BR><BR> <img src="http://d10km6otpah3bu.cloudfront.net/' + photofilename + '" alt="Test" style="width:30%;height:auto;"><BR>' 
+    initial_html = '<html> <body> <button type="submit" onclick="send()">Take a New Photo</button><BR><BR> '
+    img1 = '<img src="https://' + cdn_domain + '/' + photofilename + '" alt="Test" style="width:30%;height:auto;"><BR>' 
     div1 = '<div id=paragraph1> <BR><b>People on Photo: </b>'+ str(people) + '<BR></div>'
     div2 = '<div id=paragraph2> <BR><b>Using Mask? </b>'+ usingmask + '</div>'
     
     final_html = '</body> </html>'
-    js = '<script type="text/javascript" language="javascript"> function send(){var e=new XMLHttpRequest;e.open("POST","https://nh1drlqnu7.execute-api.us-east-1.amazonaws.com/test/python",!1),e.setRequestHeader("Content-Type","application/json"),e.send(null),alert(e.responseText)} </script>'
-    content = initial_html + div1 + div2 + div3 + final_html + js
+    js = '<script type="text/javascript" language="javascript"> function send(){var e=new XMLHttpRequest;e.open("GET","https://' + api_url + '.execute-api.us-east-1.amazonaws.com/prod/iotapi",!1),e.setRequestHeader("Content-Type","application/json"),e.send(null),alert(e.responseText)} </script>'
+    content = initial_html + img1 + div1 + div2 + div3 + final_html + js
 
     #Return
     return {
