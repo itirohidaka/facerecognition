@@ -53,7 +53,7 @@ command.
 
 # Configuring the Raspberry Pi (Raspian)
 
-1. To activate the Camera Pi use this commands:
+1. To activate the Camera Pi, access the Raspberry Pi using SSH and use the following commands:
 ``` bash
 sudo apt-get update
 sudo apt-get install python-picamera python3-picamera
