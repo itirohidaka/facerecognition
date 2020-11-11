@@ -1,5 +1,5 @@
 
-# Face Recognition Demo
+# Mask Recognition Demo
 
 Under Construction!!!!
 
