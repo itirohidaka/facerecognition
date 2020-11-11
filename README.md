@@ -7,7 +7,7 @@ Under Construction!!!!
 
 This is a project automated with AWS CDK (Python) and tested in AWS Cloud9 environment.
 
-# How to Create this solution on AWS:
+# How to create this solution on AWS:
 
 Open the terminal on Cloud9 and clone this repo using git commands.
 ``` bash
@@ -51,9 +51,16 @@ command.
  * `cdk diff`        compare deployed stack with current state
  * `cdk docs`        open CDK documentation
 
-# Configuring the Raspberry Pi:
+# Configuring the Raspberry Pi (Raspian)
 
+To activate the Camera Pi use this commands:
 ``` bash
 sudo apt-get update
 sudo apt-get install python-picamera python3-picamera
 ```
+
+Install the Node-Red on Raspian:
+``` bash
+bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+```
+
