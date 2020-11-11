@@ -63,4 +63,4 @@ Install the Node-Red on Raspian:
 ``` bash
 bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
 ```
-To get more details click on the link: [Raspberry Pi](https://nodered.org/docs/getting-started/raspberrypi)
+To get more details on how to install Node-Red on Raspberry Pi click [here](https://nodered.org/docs/getting-started/raspberrypi).
