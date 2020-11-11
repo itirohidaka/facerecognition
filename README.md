@@ -1,13 +1,15 @@
 
-# CDK Python - Face Recognition
+# Face Recognition Demo
 
 Under Construction!!!!
+
+## Architecture Overview
 
 ![alt text](img/facerecognition.jpg)
 
 This is a project automated with AWS CDK (Python) and tested in AWS Cloud9 environment.
 
-# How to create this solution on AWS:
+## How to create this solution on AWS:
 
 Open the terminal on Cloud9 and clone this repo using git commands.
 ``` bash
@@ -43,7 +45,7 @@ To add additional dependencies, for example other CDK libraries, just add
 them to your `setup.py` file and rerun the `pip install -r requirements.txt`
 command.
 
-## Useful CDK commands
+Useful CDK commands
 
  * `cdk ls`          list all stacks in the app
  * `cdk synth`       emits the synthesized CloudFormation template
@@ -51,7 +53,7 @@ command.
  * `cdk diff`        compare deployed stack with current state
  * `cdk docs`        open CDK documentation
 
-# Configuring the Raspberry Pi (Raspian)
+## Configuring the Raspberry Pi (Raspian)
 
 1. To activate the Camera Pi, access the Raspberry Pi using SSH and use the following commands:
 ``` bash
