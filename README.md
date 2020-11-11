@@ -53,13 +53,13 @@ command.
 
 # Configuring the Raspberry Pi (Raspian)
 
-To activate the Camera Pi use this commands:
+1. To activate the Camera Pi use this commands:
 ``` bash
 sudo apt-get update
 sudo apt-get install python-picamera python3-picamera
 ```
 
-Install the Node-Red on Raspian:
+2. Install the Node-Red on Raspian:
 ``` bash
 bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
 ```
