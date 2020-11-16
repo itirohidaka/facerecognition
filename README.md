@@ -1,9 +1,11 @@
 
 # Mask Recognition Demo
 
-Under Construction!!!!
+The Objective of this Repo is to create an repeatable Demo of the Mask Recognition solution using AWS services and AWS Rekognition API to detect the usage of PPE (Personal Protective Equipment).
 
 ## Architecture Overview
+
+This section is intended to show us the Diagram with the solution component.
 
 ![alt text](img/facerecognition.jpg)
 
