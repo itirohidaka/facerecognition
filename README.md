@@ -11,7 +11,11 @@ This section is intended to show us the Diagram with the solution component.
 
 This is a project automated with AWS CDK (Python) and tested in AWS Cloud9 environment.
 
-## How to create this solution on AWS:
+## How to create this solution on AWS
+The component creation was automated using AWs CDK (Cloud Development Kit). To clone the code and to deploy the services, execute the following step by step: 
+
+OBS: The deployment of this solution can incur in costs on your AWS monthly billing.
+
 
 Open the terminal on Cloud9 and clone this repo using git commands.
 ``` bash
