@@ -1,0 +1,322 @@
+[
+    {
+        "id": "7f90ff66.44957",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "7fae04b8.f6da3c",
+        "type": "camerapi-takephoto",
+        "z": "7f90ff66.44957",
+        "filemode": "1",
+        "filename": "photo1.JPEG",
+        "filedefpath": "0",
+        "filepath": "/home/pi/Pictures/",
+        "fileformat": "jpeg",
+        "resolution": "3",
+        "rotation": "0",
+        "fliph": "0",
+        "flipv": "0",
+        "brightness": "50",
+        "contrast": "0",
+        "sharpness": "0",
+        "quality": "80",
+        "imageeffect": "none",
+        "exposuremode": "auto",
+        "iso": "0",
+        "agcwait": "1.0",
+        "led": "0",
+        "awb": "auto",
+        "name": "Take Photo",
+        "x": 630,
+        "y": 360,
+        "wires": [
+            [
+                "8ebc5a01.0d2df8"
+            ]
+        ]
+    },
+    {
+        "id": "8fa51b1f.a81c68",
+        "type": "ui_template",
+        "z": "7f90ff66.44957",
+        "group": "2550fbcc.6e6154",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "format": "<script>\nvar value = \"1\";\n// or overwrite value in your callback function ...\nthis.scope.action = function() { return value; }\n\nfunction updateF() {\n  var source = '/photo1.JPEG',\n  timestamp = (new Date()).getTime(),\n  newUrl = source + '?_=' + timestamp;\n  document.getElementById(\"photo\").src = newUrl;\n}\n</script>\n\n<md-button ng-click=\"send({payload:action()})\" onclick=\"setTimeout(updateF, 2500);\" style=\"padding:40px; margin-bottom: 40px;\" >\n <ui-icon icon=\"camera\"></ui-icon>\n Take a photo<br>\n</md-button>\n\n<div style=\"margin-bottom:40px;\">\n <img src=\"/photo1.JPEG\" id=\"photo\" width=\"100%\" height=\"100%\">\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 380,
+        "y": 260,
+        "wires": [
+            [
+                "7fae04b8.f6da3c"
+            ]
+        ]
+    },
+    {
+        "id": "d26fc044.f6dfc",
+        "type": "debug",
+        "z": "7f90ff66.44957",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "8ebc5a01.0d2df8",
+        "type": "function",
+        "z": "7f90ff66.44957",
+        "name": "",
+        "func": "var today = new Date();\nvar dd = String(today.getDate()).padStart(2, '0');\nvar mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!\nvar yyyy = today.getFullYear();\nvar hour = String(today.getHours()).padStart(2, '0');\nvar minute = String(today.getMinutes()).padStart(2, '0');\nvar second = String(today.getSeconds()).padStart(2, '0');\n\ntoday =  yyyy + mm + dd;\ntime = hour.toString() + minute.toString() + second.toString();\n\nmsg.filename = \"photo-\" + today + \"-\" + time + \".jpeg\";\nmsg.localFilename = msg.payload;\nmsg.Key = msg.filename\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 800,
+        "y": 360,
+        "wires": [
+            [
+                "2f9ed29a.39fa1e"
+            ]
+        ]
+    },
+    {
+        "id": "a8a6b4f5.60b8c8",
+        "type": "inject",
+        "z": "7f90ff66.44957",
+        "name": "Test",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "Bucket",
+                "v": "itiro-teste",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "teste",
+        "payloadType": "str",
+        "x": 430,
+        "y": 200,
+        "wires": [
+            [
+                "7fae04b8.f6da3c"
+            ]
+        ]
+    },
+    {
+        "id": "aedfc511.db91b8",
+        "type": "mqtt in",
+        "z": "7f90ff66.44957",
+        "name": "",
+        "topic": "photo",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "412d0089.d648c",
+        "x": 110,
+        "y": 360,
+        "wires": [
+            [
+                "d71ec8c6.e2b428"
+            ]
+        ]
+    },
+    {
+        "id": "dc78e1b4.26ada",
+        "type": "switch",
+        "z": "7f90ff66.44957",
+        "name": "",
+        "property": "payload.photo",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "neq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 330,
+        "y": 460,
+        "wires": [
+            [
+                "c144f716.ac6888"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "d71ec8c6.e2b428",
+        "type": "json",
+        "z": "7f90ff66.44957",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 190,
+        "y": 460,
+        "wires": [
+            [
+                "dc78e1b4.26ada"
+            ]
+        ]
+    },
+    {
+        "id": "55486fd5.837c9",
+        "type": "catch",
+        "z": "7f90ff66.44957",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 120,
+        "y": 740,
+        "wires": [
+            [
+                "1f3a6b3b.b9dfb5"
+            ]
+        ]
+    },
+    {
+        "id": "1f3a6b3b.b9dfb5",
+        "type": "debug",
+        "z": "7f90ff66.44957",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 280,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "c144f716.ac6888",
+        "type": "function",
+        "z": "7f90ff66.44957",
+        "name": "",
+        "func": "msg.Bucket = msg.payload.photo_bucket;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 420,
+        "y": 360,
+        "wires": [
+            [
+                "7fae04b8.f6da3c"
+            ]
+        ]
+    },
+    {
+        "id": "2f9ed29a.39fa1e",
+        "type": "amazon s3 put",
+        "z": "7f90ff66.44957",
+        "aws": "",
+        "bucket": "itiro-teste",
+        "filename": "",
+        "localFilename": "",
+        "contentType": "image/jpeg",
+        "contentEncoding": "",
+        "region": "us-east-1",
+        "isBase64": "",
+        "name": "",
+        "acl": "",
+        "outputs": 1,
+        "x": 970,
+        "y": 360,
+        "wires": [
+            [
+                "d26fc044.f6dfc"
+            ]
+        ]
+    },
+    {
+        "id": "2550fbcc.6e6154",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "4ec84625.f81528",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "412d0089.d648c",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "a25v3hneylcafa-ats.iot.us-east-1.amazonaws.com",
+        "port": "8883",
+        "tls": "a3eeb5f4.4af1c8",
+        "clientid": "",
+        "usetls": true,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "4ec84625.f81528",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "a3eeb5f4.4af1c8",
+        "type": "tls-config",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "54e44c517c-certificate.pem.crt",
+        "keyname": "54e44c517c-private.pem.key",
+        "caname": "root-CA.crt",
+        "servername": "",
+        "verifyservercert": false
+    }
+]
