@@ -53,7 +53,7 @@ Useful CDK commands
  * `cdk diff`        compare deployed stack with current state
  * `cdk docs`        open CDK documentation
 
-## Configuring the Raspberry Pi (Raspian)
+## Configuring the Raspberry Pi/Raapian (optional)
 
 1. To activate the Camera Pi, access the Raspberry Pi using SSH and use the following commands:
 ``` bash
@@ -66,3 +66,7 @@ sudo apt-get install python-picamera python3-picamera
 bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
 ```
 To get more details on how to install Node-Red on Raspberry Pi click [here](https://nodered.org/docs/getting-started/raspberrypi).
+
+3. To import the Flow, click on the Menu (Right top corner) and "Import". Copy the NodeRed/flow.json content and past to the NodeRed.
+
+OBS: The MQTT and the S3 Nodes needs to be configured manually after the import.
