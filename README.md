@@ -59,7 +59,7 @@ Useful CDK commands
  * `cdk diff`        compare deployed stack with current state
  * `cdk docs`        open CDK documentation
 
-## Configuring the Raspberry Pi/Raapian (optional)
+## Configuring the Raspberry Pi/Rasbian (optional)
 
 1. To activate the Camera Pi, access the Raspberry Pi using SSH and use the following commands:
 ``` bash
